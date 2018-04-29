@@ -8,7 +8,7 @@ const distanceMatrixApiRoot = 'https://maps.googleapis.com/maps/api/distancematr
 export const getPlaceAutocompleteData = functions.https.onRequest((req, res) => {
     const url = autocompleteApiRoot + req.body + "&key=" + googleApiKey;
 
-    request(url, function(error, response, body) {
+    request(url, function (error, response, body) {
         if (!error && response.statusCode === 200) {
             res.set('Access-Control-Allow-Origin', '*')
             res.set('Access-Control-Allow-Methods', 'GET, POST')
@@ -20,7 +20,7 @@ export const getPlaceAutocompleteData = functions.https.onRequest((req, res) => 
 export const getTravelTimeData = functions.https.onRequest((req, res) => {
     const url = distanceMatrixApiRoot + "/" + req.body + "&key=" + googleApiKey;
 
-    request(url, function(error, response, body) {
+    request(url, function (error, response, body) {
         if (!error && response.statusCode === 200) {
             res.set('Access-Control-Allow-Origin', '*')
             res.set('Access-Control-Allow-Methods', 'GET, POST')
