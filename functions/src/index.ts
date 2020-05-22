@@ -1,5 +1,4 @@
-import { Settings } from './models/settings.model';
-import * as functions from 'firebase-functions';
+const functions = require('firebase-functions');
 import { Helper } from './helper';
 const request = require('request');
 

@@ -1,13 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const googleApiKey = 'AIzaSyBtpBBEMpGPGtNdVpgjIljd_oDR4KVWRN0';
 const autocompleteApiRoot = 'https://maps.googleapis.com/maps/api/place/autocomplete/json?';
 const distanceMatrixApiRoot = 'https://maps.googleapis.com/maps/api/distancematrix/json?';
 class Helper {
     static buildPlacesUrl(fragment) {
         return (autocompleteApiRoot +
             "input=" + fragment +
-            "&key=" + googleApiKey);
+            "&key=" + process.env.GOOGLE_MAPS_API_KEY);
     }
     static buildTravelTimesUrl(origin, destination, settings, departureTime) {
         return (distanceMatrixApiRoot +
@@ -17,7 +16,7 @@ class Helper {
             '&units=' + settings.unitSystem +
             '&departure_time=' + departureTime +
             '&traffic_model=' + settings.trafficModel +
-            '&key=' + googleApiKey);
+            '&key=' + process.env.GOOGLE_MAPS_API_KEY);
     }
 }
 exports.Helper = Helper;

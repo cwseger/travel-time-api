@@ -1,11 +1,13 @@
-import { TravelMode } from "./enums/travel-mode.enum";
-import { UnitSystem } from "./enums/unit-system.enum";
-import { TrafficModel } from "./enums/traffic-model.enum";
 import { Settings } from "./models/settings.model";
 
-const googleApiKey = 'AIzaSyBtpBBEMpGPGtNdVpgjIljd_oDR4KVWRN0';
 const autocompleteApiRoot = 'https://maps.googleapis.com/maps/api/place/autocomplete/json?';
 const distanceMatrixApiRoot = 'https://maps.googleapis.com/maps/api/distancematrix/json?';
+
+declare var process: {
+    env: {
+        GOOGLE_MAPS_API_KEY: string,
+    }
+}
 
 export class Helper {
 
@@ -13,7 +15,7 @@ export class Helper {
         return (
             autocompleteApiRoot +
             "input=" + fragment +
-            "&key=" + googleApiKey
+            "&key=" + process.env.GOOGLE_MAPS_API_KEY
         );
     }
 
@@ -31,7 +33,7 @@ export class Helper {
             '&units=' + settings.unitSystem +
             '&departure_time=' + departureTime +
             '&traffic_model=' + settings.trafficModel +
-            '&key=' + googleApiKey
+            '&key=' + process.env.GOOGLE_MAPS_API_KEY
         );
     }
 }
